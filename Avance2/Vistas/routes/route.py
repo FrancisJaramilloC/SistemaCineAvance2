@@ -88,34 +88,34 @@ def edicionproyecto(id):
 
     
 
-@router.route('/lista/inversionistas/<codigodelproyecto>')
+@router.route('/lista/personas/<codigodelproyecto>')
 def listainver(codigodelproyecto):
-    r = requests.get('http://localhost:8099/api/inversionistas/misinversionistas/'+codigodelproyecto)
+    r = requests.get('http://localhost:8099/api/personas/mispersonas/'+codigodelproyecto)
     data = r.json()
     r = requests.get('http://localhost:8099/api/proyectos/misproyectos')
     datah = r.json()
     misproyecto_data = next((proyecto for proyecto in datah["data"] if proyecto["codigodelproyecto"] == codigodelproyecto), None)
-    return render_template('misinversionista/lista.html', lista = data["data"], listag = datah["data"], misproyectos = misproyecto_data)
+    return render_template('mispersona/lista.html', lista = data["data"], listag = datah["data"], misproyectos = misproyecto_data)
 
-@router.route('/form/inversionistas/<codigodelproyecto>')
+@router.route('/form/personas/<codigodelproyecto>')
 def formInver(codigodelproyecto):
-    r = requests.get('http://localhost:8099/api/inversionistas/misinversionistas/'+codigodelproyecto)
+    r = requests.get('http://localhost:8099/api/personas/mispersonas/'+codigodelproyecto)
     data = r.json()
     r = requests.get('http://localhost:8099/api/proyectos/misproyectos')
     datah = r.json()
     misproyecto_data = next((proyecto for proyecto in datah["data"] if proyecto["codigodelproyecto"] == codigodelproyecto), None)
-    return render_template('misinversionista/crear.html', lista = data["data"], listag = datah["data"], misproyectos = misproyecto_data)
+    return render_template('mispersona/crear.html', lista = data["data"], listag = datah["data"], misproyectos = misproyecto_data)
 
-@router.route('/misinversionistas/<codigodelproyecto>')
-def misinversionistas(codigodelproyecto):
-    r = requests.get('http://localhost:8099/api/inversionistas/misinversionistas/'+codigodelproyecto)
+@router.route('/mispersonas/<codigodelproyecto>')
+def mispersonas(codigodelproyecto):
+    r = requests.get('http://localhost:8099/api/personas/mispersonas/'+codigodelproyecto)
     data = r.json()
     r = requests.get('http://localhost:8099/api/proyectos/misproyectos')
     datah = r.json()
     misproyecto_data = next((proyecto for proyecto in datah["data"] if proyecto["codigodelproyecto"] == codigodelproyecto), None)
     return render_template('templateinve.html', lista = data["data"], listag = datah["data"], misproyectos = misproyecto_data)
 
-@router.route('/guardar/inversionista/<codigodelproyecto>', methods=['POST'])
+@router.route('/guardar/persona/<codigodelproyecto>', methods=['POST'])
 def guardarInver(codigodelproyecto):
     hearders = {'Content-Type': 'application/json'}
     form = request.form
@@ -124,14 +124,14 @@ def guardarInver(codigodelproyecto):
         "nombres": form['nombre'],
         "dni": form['dni'],
     }
-    r = requests.post(f'http://localhost:8099/api/inversionistas/crear/{codigodelproyecto}', headers=hearders, data=json.dumps(dataF))
+    r = requests.post(f'http://localhost:8099/api/personas/crear/{codigodelproyecto}', headers=hearders, data=json.dumps(dataF))
     dat = r.json()
     if r.status_code == 200:
         flash("Se guardo correctamente", category='info')
-        return redirect('/lista/inversionistas/'+codigodelproyecto)
+        return redirect('/lista/personas/'+codigodelproyecto)
     else:
         flash(str(dat["message"]), category='error')
-        return redirect('/lista/inversionistas/'+codigodelproyecto)
+        return redirect('/lista/personas/'+codigodelproyecto)
     
 
 

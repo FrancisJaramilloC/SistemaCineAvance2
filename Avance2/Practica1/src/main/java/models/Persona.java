@@ -1,27 +1,27 @@
 package models;
 
-public class Inversionista {
-    private Integer idInversionista;
+public class Persona {
+    private Integer idpersona;
     private String nombres;
     private String dni;
     private String pertenencia;
 
-    public Inversionista() {
+    public Persona() {
     }
 
-    public Inversionista(Integer idInversionista, String nombres, String dni, String pertenencia) {
-        this.idInversionista = idInversionista;
+    public Persona(Integer idpersona, String nombres, String dni, String pertenencia) {
+        this.idpersona = idpersona;
         this.nombres = nombres;
         this.dni = dni;
         this.pertenencia = pertenencia;
     }
 
-    public Integer getIdInversionista() {
-        return idInversionista;
+    public Integer getIdpersona() {
+        return idpersona;
     }
 
-    public void setIdInversionista(Integer idInversionista) {
-        this.idInversionista = idInversionista;
+    public void setIdpersona(Integer idpersona) {
+        this.idpersona = idpersona;
     }
 
     public String getNombres() {

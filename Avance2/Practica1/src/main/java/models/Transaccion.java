@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Transaccion {
     private int idTransaccion;
-    private String inversionista;
+    private String persona;
     private String tipoTransaccion;
     private Date fecha;
     private String descripción;
@@ -13,9 +13,9 @@ public class Transaccion {
 
     }
 
-    public Transaccion(int idTransaccion, String inversionista, String tipoTransaccion, Date fecha, String descripción) {
+    public Transaccion(int idTransaccion, String persona, String tipoTransaccion, Date fecha, String descripción) {
         this.idTransaccion = idTransaccion;
-        this.inversionista = inversionista;
+        this.persona = persona;
         this.tipoTransaccion = tipoTransaccion;
         this.fecha = fecha;
         this.descripción = descripción;
@@ -29,12 +29,12 @@ public class Transaccion {
         this.idTransaccion = idTransaccion;
     }
 
-    public String getInversionista() {
-        return inversionista;
+    public String getpersona() {
+        return persona;
     }
 
-    public void setInversionista(String inversionista) {
-        this.inversionista = inversionista;
+    public void setpersona(String persona) {
+        this.persona = persona;
     }
 
     public String getTipoTransaccion() {

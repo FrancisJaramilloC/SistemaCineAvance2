@@ -9,25 +9,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import controller.TDA.list.LinkedList;
-import models.Inversionista;
+import models.Persona;
 
-import controller.dao.services.InversionistaServices;
-@Path("/inversionistas")
-public class inversionistaApi {
-   @Path("/misinversionistas/{codigodelproyecto}")
+import controller.dao.services.PersonaServices;
+@Path("/personas")
+public class PersonaApi {
+   @Path("/mispersonas/{codigodelproyecto}")
    @GET
    @Produces(MediaType.APPLICATION_JSON)
-   public Response getAllInversionista(@PathParam("codigodelproyecto") String codigodelproyecto) throws Exception {
+   public Response getAllpersona(@PathParam("codigodelproyecto") String codigodelproyecto) throws Exception {
        HashMap map = new HashMap<>();
-       InversionistaServices is = new InversionistaServices();
+       PersonaServices is = new PersonaServices();
        
-       LinkedList<Inversionista> lista = is.listAll().filter(codigodelproyecto);
+       LinkedList<Persona> lista = is.listAll().filter(codigodelproyecto);
 
        if (lista.isEmpty()) {
            map.put("msg", "ERROR");
-           map.put("data", "No se encontraron inversionistas");
+           map.put("data", "No se encontraron personas");
        } else {
-           map.put("msg", "Lista de inversionistas");
+           map.put("msg", "Lista de personas");
            map.put("data", lista.toArray());
        }
 
@@ -40,12 +40,12 @@ public class inversionistaApi {
     public Response save(HashMap map, @PathParam("codigodelproyecto") String codigodelproyecto)  throws Exception {
         HashMap res = new HashMap<>();
         try {
-            InversionistaServices is = new InversionistaServices();
-            Inversionista inversionista = is.getInversionista();
-            inversionista.setNombres(map.get("nombres").toString());
-            inversionista.setDni(map.get("dni").toString());
-            inversionista.setPertenencia(codigodelproyecto);
-            is.setInversionista(inversionista);
+            PersonaServices is = new PersonaServices();
+            Persona persona = is.getpersona();
+            persona.setNombres(map.get("nombres").toString());
+            persona.setDni(map.get("dni").toString());
+            persona.setPertenencia(codigodelproyecto);
+            is.setpersona(persona);
             is.save();
             res.put("msg", "ok");
             return Response.ok(res).build();

@@ -1,13 +1,14 @@
-controller\dao\InversionistaDao.class
+models\Persona.class
+com\example\rest\PersonaApi.class
 com\example\rest\proyectoApi.class
 controller\dao\TransaccionDao.class
 controller\TDA\list\OverFlowException.class
+controller\dao\services\PersonaServices.class
 com\example\rest\MyResource.class
 models\Proyecto.class
-com\example\rest\inversionistaApi.class
 controller\dao\ProyectoDao.class
-controller\dao\services\InversionistaServices.class
 controller\TDA\list\Node.class
+controller\dao\PersonaDao.class
 models\Transaccion.class
 controller\dao\services\ProyectoServices.class
 com\example\rest\Main.class
@@ -15,7 +16,6 @@ controller\TDA\stack\Stack.class
 controller\TDA\stack\StackOperation.class
 controller\TDA\list\LinkedList.class
 controller\dao\implement\InterfazDao.class
-models\Inversionista.class
 controller\dao\implement\AdapterDao.class
 controller\TDA\queue\QueueOperation.class
 controller\TDA\list\ListEmptyException.class
